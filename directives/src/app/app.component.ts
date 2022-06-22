@@ -13,6 +13,9 @@ export class AppComponent implements OnInit {
     //Add 'implements OnInit' to the class.
     console.log('propTeste',this.propTeste)
     this.teste()
+
+    console.log('propTesteAlterada',this.propTeste)
+
   }
 
   @SimpleDecorator({
@@ -25,13 +28,15 @@ export class AppComponent implements OnInit {
 }
 
 
-
+// Basically I can pass any parameter to a decorator, evaluate its code and then apply the suitable code
 function SimpleDecorator(message:Object){
   console.log('oioioi', message);
 
   return function(target: any, key: any, descriptor: any) {
+
     console.log('Our decorated class', target);
     console.log('Our decorated key', key);
+    console.log('Our decorated k2131', message);
     console.log('Our decorated descriptor', descriptor);
     descriptor.value = function(){
       console.log('rodou nada po', this, arguments);
